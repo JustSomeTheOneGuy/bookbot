@@ -4,10 +4,15 @@ def main():
     word_count = get_word_count(book)
     char_count = get_character_count(book)
     sorted_list = list_of_dictionaries(char_count)
+    
     sorted_list.sort(reverse=True, key=sort_on)
     print(f"--- Begin report of {book_path} ---")
+    print(f"{word_count} words were found in this document")
+    print()
+
     for l in sorted_list:
         print(f"The '{l["char"]} character was found {l["num"]} times")
+
     print("--- End report ---")
 
    
@@ -20,8 +25,7 @@ def list_of_dictionaries(dict):
     list_dict = []
     for d in dict:
         if d.isalpha():
-            new_dict = {"char" : d, "num" : dict[d]}
-            list_dict.append(new_dict)
+            list_dict.append({"char" : d, "num" : dict[d]})
     return list_dict
 
 def get_character_count(text):
